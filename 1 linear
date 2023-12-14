@@ -1,0 +1,39 @@
+#include <stdio.h>
+int i,id;
+struct employee
+{
+    char name[20];
+    int e;
+}emp[5];
+void search(int id)
+{
+    for(i=0;i<5;i++)
+    {
+        if(emp[i].e==id)
+        {
+            puts(emp[i].name);
+           // printf("name= %s",emp[i].name);
+        }
+        else if(i>5)
+        {
+            printf("invalid ");
+        }
+    }
+    
+}
+
+int main()
+{  
+    printf("enter the information\n");
+    for(i=0;i<5;i++)
+    {
+        printf("enter the employee id\n");
+        scanf("%d",&emp[i].e);
+        printf("enter the employee name\n");
+        scanf("%s",&emp[i].name);
+    
+    }
+    printf("enter the id to be searched\n");
+    scanf("%d",&id);
+    search(id);
+}

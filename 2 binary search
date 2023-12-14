@@ -1,0 +1,80 @@
+#include<stdio.h>
+
+struct pq
+{
+    char name[8];
+    int marks;
+    int rollno;
+}s[3];
+
+/*void sort()
+{
+    struct pq temp;
+    for(int i=0;i<3;i++)
+    {
+        for(int j=0;j<(3-i-1);j++)
+        {
+            if(s[i].rollno>s[j].rollno)
+            {
+                s[i]=temp;
+                s[i]=s[i+1];
+                s[i+1]=temp;
+            }
+        }
+    }
+    printf("sorted sucessfull");
+    for(int i=0;i<3;i++)
+    {
+        printf("%d",s[i].rollno);
+    }
+
+}*/
+
+void search(int roll)
+{
+    int n=3,mid,flag=0;
+    int start=0;
+    int end=n-1;
+
+    while(start<=end)
+    {
+        mid = (start+end)/2;
+        if(s[mid].rollno==roll)
+        {
+            flag=1;
+            break;
+        }
+        else if(s[mid].rollno>roll)
+        {
+            end=mid-1;
+        }
+        else{
+            start=mid+1;
+        }
+    }
+    if(flag!=0)
+    {
+        printf("Name:%s",s[mid].name);
+        printf("Roll no:%d",s[mid].rollno);
+        printf("Mark:%d",s[mid].marks);
+    }
+}
+
+void main()
+{
+
+    printf("Enter name rollno and mark of 5 student\n");
+    for(int i=0;i<3;i++)
+    {
+        scanf("%s",s[i].name);
+        scanf("%d",&s[i].marks);
+        scanf("%d",&s[i].rollno);
+    }
+    //sort();
+
+    int roll;
+    printf("Enter the roll no\n");
+    scanf("%d",&roll);
+
+    search(roll);
+}
